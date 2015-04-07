@@ -6,3 +6,5 @@ Toric array mean the left side is adjacent to the right side and the top is adja
 
 ## About the class
 The class is a template class to fit all objects. The class can also work with other origin than (0,0). You can get or set object relative to another.
+
+This template class is separate into a .h file and a .cpp file, so you have to include the .cpp instead of .h (cause of template class).
