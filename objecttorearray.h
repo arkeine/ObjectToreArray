@@ -8,14 +8,14 @@ public:
     ObjectToreArray(int width, int height);
     virtual ~ObjectToreArray();
 
-    T *get(int x, int y, int centerX = 0, int centerY = 0) const;
-    void set(int x, int y, int centerX = 0, int centerY = 0, T *cell);
+    T &get(int x, int y, int centerX = 0, int centerY = 0) const;
+    void set(T &cell, int x, int y, int centerX = 0, int centerY = 0);
 
     int height() const;
     int width() const;
 
 private:
-    T ***cells;
+    T **cells;
     int h;
     int w;
 	    

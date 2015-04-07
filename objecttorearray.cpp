@@ -9,13 +9,10 @@ ObjectToreArray<T>::ObjectToreArray(int width, int height)
 {
     this->h = height;
     this->w = width;
-    cells = new T**[w];
+    cells = new T*[w];
 
     for (int i = 0; i < w; ++i) {
-        cells[i] = new T*[h];
-        for (int j = 0; j < h; ++j) {
-            cells[i][j] = 0;
-        }
+        cells[i] = new T[h];
     }
 }
 
@@ -33,7 +30,7 @@ ObjectToreArray<T>::~ObjectToreArray()
 /*============================================*/
 
 template<typename T>
-T *ObjectToreArray<T>::get(int x, int y, int centerX, int centerY) const
+T &ObjectToreArray<T>::get(int x, int y, int centerX, int centerY) const
 {
     uniformizeCoord(x, y, centerX, centerY);
 
@@ -41,7 +38,7 @@ T *ObjectToreArray<T>::get(int x, int y, int centerX, int centerY) const
 }
 
 template<typename T>
-void ObjectToreArray<T>::set(int x, int y, int centerX, int centerY, T *cell)
+void ObjectToreArray<T>::set(T &cell, int x, int y, int centerX, int centerY)
 {
     uniformizeCoord(x, y, centerX, centerY);
 	
