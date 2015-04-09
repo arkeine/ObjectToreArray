@@ -1,4 +1,5 @@
 #include "objecttorearray.h"
+#include <algorithm>
 
 /*============================================*/
 //  CONSTRUCTOR / DESTRUCTOR
@@ -11,15 +12,43 @@ ObjectToreArray<T>::ObjectToreArray(int width, int height)
     this->w = width;
     cells = new T*[w];
 
-    for (int i = 0; i < w; ++i) {
+    for (int i = 0; i < w; ++i)
+    {
         cells[i] = new T[h];
     }
 }
 
 template<typename T>
+ObjectToreArray<T>::ObjectToreArray(const ObjectToreArray<T> &o)
+{
+    this->h = o.h;
+    this->w = o.w;
+    cells = new T*[w];
+
+    for (int i = 0; i < w; ++i)
+    {
+        cells[i] = new T[h];
+        for (int j = 0; j < h; ++j)
+        {
+            cells[i][j] = o.cells[i][j];
+        }
+    }
+}
+
+template<typename T>
+ObjectToreArray<T> &ObjectToreArray<T>::operator=(ObjectToreArray<T> o) //Force copy
+{
+    std::swap(this->h, o.h);
+    std::swap(this->w, o.w);
+    std::swap(this->cells, o.cells);
+    return *this;
+}
+
+template<typename T>
 ObjectToreArray<T>::~ObjectToreArray()
 {
-    for (int i = 0; i < w; ++i) {
+    for (int i = 0; i < w; ++i)
+    {
         delete cells[i];
     }
     delete cells;
@@ -38,7 +67,7 @@ T &ObjectToreArray<T>::get(int x, int y, int centerX, int centerY) const
 }
 
 template<typename T>
-void ObjectToreArray<T>::set(T &cell, int x, int y, int centerX, int centerY)
+void ObjectToreArray<T>::set(const T &cell, int x, int y, int centerX, int centerY)
 {
     uniformizeCoord(x, y, centerX, centerY);
 	
