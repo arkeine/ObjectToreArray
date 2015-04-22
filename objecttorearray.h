@@ -21,7 +21,8 @@ private:
     int h;
     int w;
 
-	void uniformizeCoord(int &x, int &y, int centerX, int centerY) const;
+    void uniformizeCoord(int &x, int &y, int centerX, int centerY) const;
+
 };
 
 #endif // OBJECTTOREARRAY_H
