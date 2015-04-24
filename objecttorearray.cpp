@@ -25,12 +25,12 @@ ObjectToreArray<T>::ObjectToreArray(const ObjectToreArray<T> &o)
     this->w = o.w;
     cells = new T*[w];
 
-    for (int i = 0; i < w; ++i)
+    for (int x = 0; x < w; ++x)
     {
-        cells[i] = new T[h];
-        for (int j = 0; j < h; ++j)
+        cells[x] = new T[h];
+        for (int y = 0; y < h; ++y)
         {
-            cells[i][j] = o.cells[i][j];
+            cells[x][y] = o.cells[x][y];
         }
     }
 }
