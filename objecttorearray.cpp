@@ -49,9 +49,9 @@ ObjectToreArray<T>::~ObjectToreArray()
 {
     for (int i = 0; i < w; ++i)
     {
-        delete cells[i];
+        delete[] cells[i];
     }
-    delete cells;
+    delete[] cells;
 }
 
 /*============================================*/
